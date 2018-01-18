@@ -1,0 +1,27 @@
+# WIll ignore this files
+*.dll
+*.bpl
+*.bpi
+*.dcp
+*.so
+*.apk
+*.drc
+*.map
+*.dres
+*.rsm
+*.tds
+*.dcu
+*.lib
+*.ocx
+*.cfg
+*.bak
+*.dbg
+*.exe
+*.lps
+backup/*
+lib
+debug
+*.res
+*.lrt
+*.out
+*.err
