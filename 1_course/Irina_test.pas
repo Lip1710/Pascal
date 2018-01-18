@@ -10,6 +10,7 @@ begin
 end;
 
 begin
+ # clean screen
  clrscr;
  i:=1;
  sum:=0;
