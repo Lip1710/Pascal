@@ -26,9 +26,6 @@ debug
 *.out
 *.err
 *.ini
-<<<<<<< HEAD
-.DS_Store
-=======
 
 # Apple
 # General
@@ -117,4 +114,4 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 tmtags
->>>>>>> 7f282916004333b210cfcac756b10b2d5d1bc702
+
