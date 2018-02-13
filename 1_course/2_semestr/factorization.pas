@@ -1,4 +1,4 @@
-//Lotareva Irina.
+//Lotareva Irina. Homework 1
 program factorize;
 var  x,i: integer;
  procedure fact(x:integer);
