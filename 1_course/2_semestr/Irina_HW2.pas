@@ -1,11 +1,13 @@
-//Lotareva Irina. Homework 2;
+//Lotareva Irina. Homework 2
 program Homework2;
-var n,i:integer; sum:real;
+var i,n:integer;  s:real;
 begin
  cls;
- sum:=0;
- write('Enter n, please:');
+ s:=0;
+ write('Enter n : ');
  readln(n);
- for i:=1 to n do sum:= sum+((1+i)/sqr(i));
- writeln('The answer is ',sum:0:3);
+ for i:=1 to n do
+    s:=s+((1+i)/sqr(i));
+ writeln('The answer is: ',s:0:3);
 end.
+   
