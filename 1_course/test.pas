@@ -7,13 +7,13 @@ var x,i:integer;
      for i:=1 to x do
         if (x mod i)=0 then k:=k+1;
      if k>2 then
-       writeln(' Составное число')
+       writeln(x,' Составное число')
      else
-       writeln(' Простое число');
+       writeln(x,' Простое число');
    end;
 
 begin
-  writeln('Enter the number ');
+  write('Enter the number ');
   readln(x);
   d(x);
 end.
