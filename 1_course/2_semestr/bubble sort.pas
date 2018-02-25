@@ -1,4 +1,4 @@
-program sot;
+program sort;
 const n=15;
 var i,j,c,b:integer;m:array[0..n]of integer;
 begin
