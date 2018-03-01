@@ -26,12 +26,12 @@ function minor(a:mat;column:integer):mat;
 function det(a:m;n: integer): integer;
  begin
   if n=2  then det:=(a[1,1]*a[2,2])-(a[1,2]*a[2,1])
- else
-  begin
-   s:=S+a[1,j]*k+det(minor(a,j),n-1);
-   k:=k*(-1);
-  end;
- det:=s;
+   else
+   begin
+    s:=S+a[1,j]*k+det(minor(a,j),n-1);
+    k:=k*(-1);
+   end;
+  det:=s;
  end;
  
  begin
