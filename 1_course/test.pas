@@ -1,4 +1,5 @@
-program di;
+program test
+  //copy from di.pas;
 var x,i:integer;
   procedure d (x: integer);
    var i,k:integer;
@@ -7,9 +8,9 @@ var x,i:integer;
      for i:=1 to x do
         if (x mod i)=0 then k:=k+1;
      if k>2 then
-       writeln(x,' Составное число')
+       writeln(x,' Г‘Г®Г±ГІГ ГўГ­Г®ГҐ Г·ГЁГ±Г«Г®')
      else
-       writeln(x,' Простое число');
+       writeln(x,' ГЏГ°Г®Г±ГІГ®ГҐ Г·ГЁГ±Г«Г®');
    end;
 
 begin
