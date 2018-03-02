@@ -1,4 +1,6 @@
-program di;
+program test
+  //copy from di.pas;
+  //add comment from local git HP, and fix code page
 var x,i:integer;
   procedure d (x: integer);
    var i,k:integer;
