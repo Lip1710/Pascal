@@ -19,5 +19,3 @@ begin
   readln(x);
   d(x);
 end.
-
-
