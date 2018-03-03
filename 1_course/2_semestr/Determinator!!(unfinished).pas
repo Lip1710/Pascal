@@ -16,13 +16,13 @@ var  n:integer; //m:array[1..line,1..col] of integer;
  end;
    *)
 function minor(a:mat;column:integer):mat;
- var u: integer;
+ var u:integer;
  begin
  u:=1;
  for c:=2 to b do
      for i:=1 to b do
         if i <> column then  begin
-          minor[u,c-1]:=a[i,c];
+          minor[u,c-1]:=a[i,c];  //ошибка-"неверное кол-во фактических параметров" после скобок массива minor
           u:=u+1;
         end;
 
