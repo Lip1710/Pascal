@@ -1,6 +1,7 @@
+// Irina. Find the determinator of a matrix
 program matrix;
 type mat=array[1..20,1..20] of integer;
-const  maxn=20;
+const  maxn=20; // max value of matrix's elements if it's filled in randomly
 var  n,w,c,i,b,j,k:integer;
      a:mat;
 
@@ -22,7 +23,7 @@ function minor(a:mat;n,column:integer):mat;
      u:=1;
      for i:=1 to n do
         if i <> column then  begin
-          Result[c-1,u]:=a[c,i];   //вместо minor[]:= используем Result[]:= и обратный порядок индексов
+          Result[c-1,u]:=a[c,i];
           u:=u+1;
         end;
    end;
@@ -42,7 +43,6 @@ function det(a:mat;n: integer): integer;
     end;
     det:=s;
    end;
-  //det:=s; // ОШИБКА: det присваивается некорректное значение при n=2 (s=0). Нужно перепестить в ветку else
  end;
 
 begin
