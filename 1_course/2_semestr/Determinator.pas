@@ -1,3 +1,4 @@
+
 // Irina. Find the determinator of a matrix
 program matrix;
 type mat=array[1..20,1..20] of integer;
