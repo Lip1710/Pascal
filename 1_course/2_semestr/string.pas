@@ -11,16 +11,17 @@ begin
    max:=0;
     for i:= 1 to length(s)do
      begin
-      if s[i]<> ' ' then n:=n+1 else
-       begin
-        if n > max then max:=n else
-        begin
-         if n< min then min:=n;
-        end;
+       if s[i]<> ' ' then begin
+          n:=n+1;
+          if n>max then max:=n;
+          if (i=length(s)) and (n<min) then min:=n;
+          end
+       else begin
+          if (n>0) and (n<min) then min:=n;
+          n:=0;
        end;
-      n:=0;
-      i:=i+1;
      end;
+
        writeln('The longest word has ',max,' letters');
        writeln('The shortest word has ',min,' letters');
 
