@@ -1,10 +1,11 @@
+//Irina. Class work
 program letters;
 uses CRT;
 var s: string;
     i,min,max,n: integer;
 begin
    ClrScr;
-   writeln('Fill the string with words and spaces, finishing with a space');
+   writeln('Fill the string with words and spaces');
    read(s);
    n:=0;
    min:=length(s);
