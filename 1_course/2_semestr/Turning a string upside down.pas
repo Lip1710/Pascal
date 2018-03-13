@@ -9,7 +9,7 @@ begin
  //n:=s[length(s)];
  writeln('The given string : ',s);
   //turning it upside down;
- for i:=0 to (length(s) div 2)  do
+ for i:=0 to (length(s) div 2)-1  do
      begin
      n:=s[1+i];
      s[1+i]:=s[length(s)-i];
