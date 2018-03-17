@@ -1,4 +1,4 @@
-//Irina .replacing two words in a string and their letters
+//Irina.  HomeWork from 12.03.2018. Replacing two words in a string and their letters and remove spaces
 program replace;
 var s,s1,s2,k,snew,p:string;
     i,n: integer;

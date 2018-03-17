@@ -1,4 +1,4 @@
-//Irina .replacing two words in a string
+//Irina.  HomeWork from 12.03.2018. Replacing two words in a string
 program  replace;
 var s,k,p:string;
     i,n: integer;
