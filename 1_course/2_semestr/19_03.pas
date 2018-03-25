@@ -3,49 +3,35 @@
 program glasnye;
 var s1,s:string; v,n,i,u: integer;
 begin
+ cls;
  v:=0;
  u:=0;
  s1:='';
  readln(s);
  for i:=1 to length(s) do
     begin
-    if s[i]=' ' then
-      begin
-       n:=i;
-
-
-      end
-    else
-      begin
-
-      end;
-      
-
-    
-    
-    
-    
-    
-
-    for i:=0 to (n-1) do
+     if s[i]=' '  then
        begin
-       s1:=s1+s[i];
-       if s[i] in ['A','a','E','e','I','i','O','o','U','u','Y','y','À', 'à','Å', 'å', '¨', '¸', 'È', 'è', 'Î', 'î', 'Ó', 'ó', 'Ý', 'ý', 'Û', 'û', 'Þ', 'þ', 'ß', 'ÿ']
-        then v:=v+1;
-    end;
- end;
- if v>=1 then writeln(s1) else
-   begin
-     for i:=(n+1) to length(s) do
+         if v>0 then begin
+            u:=u+1;
+            writeln (s1);
+         end;
+         v:=0;
+         s1:='';
+       end
+     else
        begin
-       s1:=s1+s[i];
-       if s[i] in ['A','a','E','e','I','i','O','o','U','u','Y','y','À', 'à','Å', 'å', '¨', '¸', 'È', 'è', 'Î', 'î', 'Ó', 'ó', 'Ý', 'ý', 'Û', 'û', 'Þ', 'þ', 'ß', 'ÿ']
-       then
-        v:=v+1;
-       writeln(s1);
+          s1:=s1+s[i];
+          if s[i] in ['A','a','E','e','I','i','O','o','U','u','Y','y','À', 'à','Å', 'å', '¨', '¸', 'È', 'è', 'Î', 'î', 'Ó', 'ó', 'Ý', 'ý', 'Û', 'û', 'Þ', 'þ', 'ß', 'ÿ']
+             then v:=v+1;
        end;
-
+      if i= length(s) then
+       begin
+        if v>0 then begin
+           u:=u+1;
+           writeln (s1);
+         end;
+       end;
     end;
-writeln('There are ', v,' words with vowels');
-
+ writeln('There are ', u,' words with vowels');
 end.
