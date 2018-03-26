@@ -27,11 +27,11 @@ begin
        end;
       if i= length(s) then
        begin
-        if v>0 then begin
+        if v>1 then begin
            u:=u+1;
            writeln (s1);
          end;
        end;
     end;
- writeln('There are ', u,' words with vowels');
+ writeln('There are ', u,' words with more than one vowels');
 end.
