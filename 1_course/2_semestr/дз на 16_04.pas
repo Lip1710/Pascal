@@ -1,32 +1,23 @@
 ﻿program tekstoviy;
-var f:text; letters: array['а'..'я'] of integer;s:char;
-    //i:char;
-    n:integer;
-
+var f:text; letters: array['а'..'я'] of integer;
+    s:char; i:integer;
 begin
-n:=0;
-assign(f, '1.txt');
- //for i:='а' to 'я' do
-  //letters[i]:=0;
- 
- reset(f);
- 
- 
- //read(letters[i]);
- while not eof(f) do 
+i:=0;
+assign(f, 'text.txt');
+reset(f);
+while not eof(f) do 
  begin
-  read(f,);
-  read(f,s);
-  if s in ['а'..'я'] then 
-  begin
-  inc(letters[s]);
-  n:=n+1;
-  end;
- 
- 
- close(f);
-
- 
+   read(f,s);
+   i:=i+1;
+   if s in ['а'..'я'] then 
+     begin 
+      inc(letters[s]);     //тоже самое letters[s]:=letters[s]+1;
+     end;
  end;
+writeln('Общее количество символов в тексте = ',i,'.');
+for s:='а' to 'я' do
+    if letters[s]>0 then
+       writeln('Количество ',s,' = ',letters[s]:5,', что составляет ',letters[s]*100/i:0:0,'%.');
+
+close(f);
 end. 
- 
