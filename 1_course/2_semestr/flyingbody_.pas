@@ -1,5 +1,5 @@
-﻿//TODO: найти формулу скорости после отскока
-// Irina. Homework from 07.05.2018
+﻿// Irina. Homework from 07.05.2018
+// Вылет горизонтально сверху. Учитывается угол падения
 program flyingbody;
 uses abcobjects,GraphABC;
 var a: ObjectABC;
@@ -8,15 +8,17 @@ var a: ObjectABC;
 const  g=9.81; // ускорение свободного падения
 begin
   // Параметры модели:
-     v0:=5;    // начальная горизонтальная скорость
+     v0:=50;    // начальная горизонтальная скорость
      loss:=1/3; // потеря кинетической энергии при столкновении с горизонтальной поверхностью
   
   a:=circleabc.Create(0,0,10,clRandom);//(x,y,z,color)
   t:=0; // начальное время
+  x1:=0;
+  d:=1;
   while (a.Top+a.Height)<WindowHeight do begin  //падение c начальной горизонтальной скоростью v0 
      t:=t+0.05; // прирост времени
      tmax:=sqrt((WindowHeight-a.Height)*2/g); // время достижения нижней границы окна
-     x:=v0*t;               // координата x
+     x:=v0*t-x1;               // координата x
      y:=round(sqr(t)*g/2);  // координата y
      sleep(10);
      if y>(WindowHeight-a.Height) then y:=WindowHeight-a.Height;  //если очередной шаг выходит за границы окна,то останавливаем на границе
@@ -24,13 +26,19 @@ begin
      anglerad:=DegToRad(90)-arctan(vcur/v0);  // угол падения в радианах к вертикали
      angledeg:=RadToDeg(anglerad);            // угол падения в градусах == angrad*180/Pi
      Window.Title := 'x= '+round(x)+'   y= ' + y +Format('  время падения={0:f1}',tmax)+Format(' тек.время={0:f1}',t)+Format(' скорость={0:f0}',round(vcur))+' угол= '+round(90-angledeg);
+     if (x>(WindowWidth-a.Width)) or (d=-1) then begin // изменяем направление движения влево
+           x1:=2*(v0*t-(WindowWidth-a.Width));
+           //t:=t*-1;
+           d:=-1;
+           //x1:=x1+2*(x-x1);
+     end;
      a.Moveto(round(x),y); // -(Vx*dt,Vy*dt);
   end;
   sleep(50);
   newangler:=DegToRad(90)-arcsin(sin(anglerad)/sqrt(1-loss)); // новый угол после отскока
-  TextOut(1,1,Round(RadToDeg(newangler)));
+  //TextOut(1,1,Round(RadToDeg(newangler)));
   v0:=round(vcur*0.7); //новая начальная скорость после приземления
-  d:=1; //1 - движение направо, -1 - налево
+ // d:=1; //1 - движение направо, -1 - налево
   while True do begin;  // отскоки
      t:=0;
      y:=y-1;
@@ -43,10 +51,10 @@ begin
         tmax:=2*v0*sin(newangler)/g;  // время достижения нижней границы окна
         x:=x1+(v0)*cos(newangler)*t*d;                    // координата x
         y:=y1-round((v0)*sin(newangler)*t-(g*sqr(t))/2);  // координата y 
-        sleep(100);
+        sleep(10);
         vcur:=abs(v0*sin(newangler)-g*t); // текущая скорость
-        anglerad:=DegToRad(90)-arctan(vcur*2/v0);  // угол падения в радианах к вертикали
-        angledeg:=RadToDeg(anglerad);            // угол падения в градусах == angrad*180/Pi
+        //anglerad:=DegToRad(90)-arctan(vcur/v0);  // угол падения в радианах к вертикали
+        //angledeg:=RadToDeg(anglerad);            // угол падения в градусах == angrad*180/Pi
         if y>(WindowHeight-a.Height) then y:=WindowHeight-a.Height; //если очередной шаг выходит за границы окна,то останавливаем на границе
         if (x>(WindowWidth-a.Width)) and (d=1) then begin // изменяем направление движения влево
            d:=-1;  
@@ -70,8 +78,8 @@ begin
         break;
      end;
      newangler:=DegToRad(90)-arcsin(sin(anglerad)/sqrt(1-loss)); // новый угол после отскока
-     TextOut(1,30,Round(RadToDeg(newangler)));
-     v0:=round(vcur*0.75); //новая начальная скорость отскока
+     //TextOut(1,30,Round(RadToDeg(newangler)));
+     v0:=round(vcur*0.8); //новая начальная скорость отскока
   end;
   Window.Title:= ' Завершено';
 end. 
