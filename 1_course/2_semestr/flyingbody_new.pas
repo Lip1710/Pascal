@@ -9,9 +9,9 @@ var a: ObjectABC;
 const  g = 9.81; // ускорение свободного падения
 begin
   //Запрос начальных значений скорости и угла вылета
-  tex := TextABC.create(1,WindowHeight-25,12,'Введите начальную скорость (20-100):',clBlack);
+  tex := TextABC.create(1,WindowHeight-25,12,'Введите начальную скорость (20-200):',clBlack);
   readln(v0); // Начальная скорость
-  if (v0<10) or (v0>100) then v0:=80;  //Проверка правильности введённого значения
+  if (v0<10) or (v0>200) then v0:=80;  //Проверка правильности введённого значения
   writeln( 'Начальная скорость: ',v0);
   tex.Text := 'Введите угол вылета (10-90):';
   readln(ang);  // Угол вылета
@@ -35,7 +35,7 @@ begin
         y:=y1-(v0*sin(DegToRad(ang))*t-(g*sqr(t))/2);  // следующая координата y по траектории полёта
         vcury:=abs(v0*sin(DegToRad(ang))-g*t); // текущая вертикальная скорость
         vcur:=sqrt(sqr(vcurx)+sqr(vcury));     // текущая скорость
-        sleep(10);
+        sleep(5);
         if y>(WindowHeight-a.Height) then y:=WindowHeight-a.Height; //если очередной шаг выходит за границы окна,то останавливаем на границе
         if x>(WindowWidth-a.Width) then begin // если достигли границы экрана справа, изменяем направление движения влево
            d:=-1;  
@@ -44,6 +44,10 @@ begin
         if x<0 then begin // если достигли границы экрана слева, изменяем направление движения вправо
            d:=1;
            x1:=x1+2*(0-x1);
+        end;
+        if y<=0 then begin // если достигли границы экрана сверху, изменяем направление движения вниз
+           t:=t+(tmax/2-t)*2;
+           x1:=x1-((x1+vcurx*t*d)-x);
         end;
         Window.Title := 'x= '+round(x)+', y= '+round(y)+'   Время полёта= '+round(tmax)+'   Тек.время= '+round(t)+'   Скорость= '+round(vcur)+'   Верт.скорость= ' + round(vcury);
         a.Moveto(round(x),round(y));  //Сдвиг объекта
