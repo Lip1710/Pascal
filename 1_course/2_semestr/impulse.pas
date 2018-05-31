@@ -12,7 +12,8 @@ begin
  tex := TextABC.create(1,WindowHeight-25,12,'Введите скорость первого шара:',clBlack);
  readln(vo1);
  writeln('vo1= ',vo1);
- tex.Visible:=false;
+ tex.Visible:=false;    //TODO: скрытие объекта tex достаточно сделать только  в конце всех вопросов
+ //TODO: нет необходимости создавать заново объект tex,достаточно изменить свойство .Text этого объекта
  tex := TextABC.create(1,WindowHeight-25,12,'Введите скорость второго шара:',clBlack);
  readln(vo2);
  writeln('vo2= ',vo2);
@@ -27,7 +28,8 @@ begin
  a:=circleabc.Create(40,windowheight-r-1,r,clrandom);
  b:=circleabc.Create(windowwidth-45,windowheight-r-1,r,clrandom);
  //while not(a=circleabc((240)-r,windowheight-2*r-1))and(b=circleabc((240)+r,windowheight-2*r-1) )do
-    begin
+  while true do
+  begin
     t:=0;
     
     k:=m1/m2;
@@ -40,10 +42,10 @@ begin
      begin
      t:=t+0.05;    
      x1:= xo1+vo1*t;
-     a.Moveto(int(x1));(windowheight-r-1));
+     a.Moveto(round(x1),(windowheight-r-1));
      xo1:=x1;
      x2:= xo2-vo2*t;
-     b.Moveto(int(x2));(windowheight-r-1));
+     b.Moveto(round(x2),(windowheight-r-1));
      xo2:=x2;
     
     
